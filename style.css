@@ -111,6 +111,12 @@ h1 {
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 50%;
 }
+@media (max-width: 768px) {
+    .cell.valid-move::before {
+        width: 40%;
+        height: 40%;
+    }
+}
 
 .disc {
     position: absolute;
@@ -203,3 +209,70 @@ h1 {
 }
 
 .move-history li {
+
+padding: 5px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+    
+    .game-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .scores {
+        width: 100%;
+        justify-content: space-around;
+    }
+    
+    .game-area {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+    }
+    
+    .board {
+        max-width: 100%;
+    }
+    
+    .move-history {
+        max-height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 5px;
+    }
+    
+    .scores {
+        gap: 10px;
+    }
+    
+    .score .disc {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .controls button {
+        padding: 12px;
+        font-size: 1rem;
+    }
+    
+    .difficulty select {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+}
