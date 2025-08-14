@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Othello Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Othello Game</h1>
+        <div class="game-info">
+            <div class="scores">
+                <div class="score black-score">
+                    <span class="disc black"></span>
+                    <span id="black-score">2</span>
+                </div>
+                <div class="score white-score">
+                    <span class="disc white"></span>
+                    <span id="white-score">2</span>
+                </div>
+            </div>
+            <div class="current-player">
+                Current Player: <span id="current-player">Black</span>
+            </div>
+            <div class="game-status" id="game-status">
+                Black's turn
+            </div>
+        </div>
+        <div class="game-area">
+            <div class="board-container">
+                <div class="board" id="board"></div>
+            </div>
+            <div class="sidebar">
+                <div class="controls">
+                    <button id="restart-btn">Restart Game</button>
+                    <div class="ai-toggle">
+                        <label>
+                            <input type="checkbox" id="ai-toggle">
+                            Play vs AI
+                        </label>
+                    </div>
+                    <div class="difficulty">
+                        <label for="difficulty">AI Difficulty:</label>
+                        <select id="difficulty" disabled>
+                            <option value="easy">Easy</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="move-history">
+                    <h3>Move History</h3>
+                    <ul id="move-history-list"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
