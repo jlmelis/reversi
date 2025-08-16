@@ -2,7 +2,6 @@
 let boardElement;
 let blackScoreElement;
 let whiteScoreElement;
-let currentPlayerElement;
 let gameStatusElement;
 let moveHistoryList;
 let restartButton;
@@ -14,7 +13,6 @@ function initUI() {
     boardElement = document.getElementById('board');
     blackScoreElement = document.getElementById('black-score');
     whiteScoreElement = document.getElementById('white-score');
-    currentPlayerElement = document.getElementById('current-player');
     gameStatusElement = document.getElementById('game-status');
     moveHistoryList = document.getElementById('move-history-list');
     restartButton = document.getElementById('restart-btn');
@@ -25,7 +23,7 @@ function initUI() {
 // Create the game board display
 function createBoardDisplay(board) {
     boardElement.innerHTML = '';
-    
+
     // Create board cells
     for (let row = 0; row < 8; row++) {
         for (let col = 0; col < 8; col++) {
@@ -33,14 +31,14 @@ function createBoardDisplay(board) {
             cell.className = 'cell';
             cell.dataset.row = row;
             cell.dataset.col = col;
-            
+
             // Add disc if exists
             if (board[row][col]) {
                 const disc = document.createElement('div');
                 disc.className = `disc ${board[row][col]}`;
                 cell.appendChild(disc);
             }
-            
+
             boardElement.appendChild(cell);
         }
     }
@@ -52,17 +50,17 @@ function updateBoardDisplay(board, currentPlayer, gameActive, isValidMove) {
     cells.forEach(cell => {
         const row = parseInt(cell.dataset.row);
         const col = parseInt(cell.dataset.col);
-        
+
         // Clear cell
         cell.innerHTML = '';
-        
+
         // Add disc if exists
         if (board[row][col]) {
             const disc = document.createElement('div');
             disc.className = `disc ${board[row][col]}`;
             cell.appendChild(disc);
         }
-        
+
         // Show valid moves for current player
         if (gameActive && board[row][col] === null && isValidMove(row, col, currentPlayer)) {
             cell.classList.add('valid-move');
@@ -77,15 +75,12 @@ function updateUI(scores, currentPlayer, gameActive, moveHistory) {
     // Update scores
     blackScoreElement.textContent = scores.black;
     whiteScoreElement.textContent = scores.white;
-    
-    // Update current player
-    currentPlayerElement.textContent = currentPlayer.charAt(0).toUpperCase() + currentPlayer.slice(1);
-    
+
     // Update game status
     if (gameActive) {
         gameStatusElement.textContent = `${currentPlayer.charAt(0).toUpperCase() + currentPlayer.slice(1)}'s turn`;
     }
-    
+
     // Update move history
     updateMoveHistory(moveHistory);
 }
@@ -93,7 +88,7 @@ function updateUI(scores, currentPlayer, gameActive, moveHistory) {
 // Update move history display
 function updateMoveHistory(moveHistory) {
     moveHistoryList.innerHTML = '';
-    
+
     moveHistory.forEach((move, index) => {
         const listItem = document.createElement('li');
         const player = move.player.charAt(0).toUpperCase() + move.player.slice(1);
@@ -102,7 +97,7 @@ function updateMoveHistory(moveHistory) {
         listItem.textContent = `Move ${index + 1}: ${player} at ${col}${row}`;
         moveHistoryList.appendChild(listItem);
     });
-    
+
     // Scroll to bottom
     moveHistoryList.scrollTop = moveHistoryList.scrollHeight;
 }
